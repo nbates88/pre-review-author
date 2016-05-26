@@ -1,0 +1,30 @@
+
+<div class="container story-container">
+  <h2>{{ getCurrentUser() }}</h2>
+  <ul class="list-inline large-font">
+    <li>
+      <span
+        contenteditable="{{ getCurrentUser() !== null}}" 
+        class="large-font"
+        ng-model="story.title"
+        ng-model-options="{debounce: 500}">
+      </span>
+    </li>
+    <li><span class="muted">by</span></li>
+    <li>
+      <select
+        ng-options="user.id as user.name for user in users"
+        ng-model="story.author_id"
+        ng-model-options="{debounce: 500}">
+      </select>
+    </li>
+  </ul>
+  <br>
+  <p
+    contenteditable="{{ getCurrentUser() !== null}}" 
+    ng-model="story.paragraphs"
+    ng-model-options="{debounce: 500}"
+    ng-list="<br><br>"
+    placeholder="(text here)">
+  </p>
+</div>
